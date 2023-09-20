@@ -19,15 +19,13 @@ export class AuthenticateUseCase {
     email,
     password,
   }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
-    // buscar o usuário no banco pelo e-mail
-    // comparar se a senha salva no banco bate com a do parâmetro
-
+    // buscando o usuário pelo e-mail
     const user = await this.usersRepository.findByEmail(email)
 
     if (!user) {
       throw new InvalidCredentialsError()
     }
-
+    // verificando se a senha recebida é a mesma salva no banco de dados
     const doesPasswordMatches = await compare(password, user.password_hash)
 
     if (!doesPasswordMatches) {

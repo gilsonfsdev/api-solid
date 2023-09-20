@@ -21,14 +21,17 @@ export class RegisterUseCase {
     email,
     password,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
+    // criando o hash da senha do usuário
     const password_hash = await hash(password, 6)
 
+    // verificando se já existe um e-mail cadastrado
     const userWithSameEmail = await this.usersRepository.findByEmail(email)
 
     if (userWithSameEmail) {
       throw new UserAlreadyExistsError()
     }
 
+    // criado um usuário
     const user = await this.usersRepository.create({
       name,
       email,
