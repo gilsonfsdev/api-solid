@@ -1,6 +1,6 @@
 # App
 
-GymPass style app.
+A "Find a Friend" é uma API Rest para adoção de cães e gatos. Nela é possível se registrar como organização e então cadastrar seus animais que estão para adoção. O usuário tem a possibilidade de visualizar estes animais e aplicar filtros por cidade, tipo do animal, tamanho entre outros.
 
 ## RFs (Requisitos funcionais) - O que é possível o usuário fazer na aplicação.
 
